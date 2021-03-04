@@ -23,8 +23,8 @@ def main():
 		meters = pw.meters()
 		for src in source_names:
 			print("%s %5.3f kW" % (src, float(meters[src]['instant_power'])/1000.0))
-			print()
-			time.sleep(1)
+		print()
+		time.sleep(1)
 
 if __name__ == "__main__":
     main()
