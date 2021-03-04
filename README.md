@@ -1,14 +1,14 @@
 # Powerwall 2 Stats
 
-The library '''powerwallstats.py''' provides a simple class to access
-a Powerwall 2 directly from your local Powerwall gateway, not Tesla's
+The library powerwallstats provides a simple class to access a
+Powerwall 2 directly from your local Powerwall gateway, not Tesla's
 cloud.
 
 ## To install
 
 pip install powerwallstats
 
-## Example
+## Example of use
 
 [examples/show_powerwallstats.py](examples/show_powerwallstats.py)
 provides a simple example use case.  You will need need to setup
@@ -20,7 +20,7 @@ to do this.
 
 This has been tested on 4th March 2021 against a Powerwall 2 running
 firmware version 20.49.0 that requires customer login credentials to
-be presented.
+be presented.  Tested using python3.
 
 ## References
 
