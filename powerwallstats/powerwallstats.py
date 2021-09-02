@@ -34,16 +34,31 @@ class powerwallstats:
         else:
             raise PowerwallstatsException("Powerwallstats failed with response: {c}".format(c=response.status_code))
                 
-    def battery_level(self):
-        # get battery charge level
-        energy = self.__get__("https://"+self.powerwallip+"/api/system_status/soe")
-        return energy["percentage"]
-
     def meters(self):
         # get agrigated meter readings
         # returns a dict containing all of the meter information
         return self.__get__("https://"+self.powerwallip+"/api/meters/aggregates")
 
+    def battery_level(self):
+        # get battery charge level
+        energy = self.__get__("https://"+self.powerwallip+"/api/system_status/soe")
+        return energy["percentage"]
+
+    def operation(self):
+        # get the operating mode and battery precentage as a dict.  Example:
+        # {'real_mode': 'self_consumption', 'backup_reserve_percent': 14.5, 'freq_shift_load_shed_soe': 75, 'freq_shift_load_shed_delta_f': -0.32}
+        # note: backup_reserve_percent:
+        #  On APP    On Powerwall
+        #    5%  
+        #   10%      14.5%
+        #   20%      24%
+        #   30%      33.5%
+        #   40%      
+        return self.__get__("https://"+self.powerwallip+"/api/operation")
+
+    def grid_faults(self):
+        # get grid fault information
+        return self.__get__("https://"+self.powerwallip+"/api/system_status/grid_faults")
 
 class PowerwallstatsException(Exception):
     pass
